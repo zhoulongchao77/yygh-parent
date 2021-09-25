@@ -114,7 +114,7 @@
     </dependencies>
 
     <build>
-        <finalName>hospital-manage2020/6/16</finalName>
+        <finalName>hospital-manage</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
