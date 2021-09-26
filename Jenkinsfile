@@ -307,70 +307,79 @@ pipeline {
                         kubernetesDeploy(configs: 'hospital-manage/deploy/**', enableConfigSubstitution: true, kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
                     }
                 }
+
                 stage('server-gateway - 部署到dev环境') {
                     agent none
                     steps {
                         kubernetesDeploy(configs: 'server-gateway/deploy/**', enableConfigSubstitution: true, kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
                     }
                 }
+
                 stage('service-cmn - 部署到dev环境') {
                     agent none
                     steps {
                         kubernetesDeploy(configs: 'service/service-cmn/deploy/**', enableConfigSubstitution: true, kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
                     }
                 }
+
                 stage('service-hosp - 部署到dev环境') {
                     agent none
                     steps {
                         kubernetesDeploy(configs: 'service/service-hosp/deploy/**', enableConfigSubstitution: true, kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
                     }
                 }
+
                 stage('service-order - 部署到dev环境') {
                     agent none
                     steps {
                         kubernetesDeploy(configs: 'service/service-order/deploy/**', enableConfigSubstitution: true, kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
                     }
                 }
+
                 stage('service-oss - 部署到dev环境') {
                     agent none
                     steps {
                         kubernetesDeploy(configs: 'service/service-oss/deploy/**', enableConfigSubstitution: true, kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
                     }
                 }
+
                 stage('service-sms - 部署到dev环境') {
                     agent none
                     steps {
                         kubernetesDeploy(configs: 'service/service-sms/deploy/**', enableConfigSubstitution: true, kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
                     }
                 }
+
                 stage('service-statistics - 部署到dev环境') {
                     agent none
                     steps {
                         kubernetesDeploy(configs: 'service/service-statistics/deploy/**', enableConfigSubstitution: true, kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
                     }
                 }
+
                 stage('service-task - 部署到dev环境') {
                     agent none
                     steps {
                         kubernetesDeploy(configs: 'service/service-task/deploy/**', enableConfigSubstitution: true, kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
                     }
                 }
+
                 stage('service-user - 部署到dev环境') {
                     agent none
                     steps {
-                        kubernetesDeploy(configs: 'service/service-user/deploy/**', 
-                                enableConfigSubstitution: true, 
-                                kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
+                        kubernetesDeploy(configs: 'service/service-user/deploy/**', enableConfigSubstitution: true, kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
                     }
                 }
 
             }
         }
 
-        stage('deploy to production') {
+        //1、配置全系统的邮件：                   全系统的监控
+        //2、修改ks-jenkins的配置，里面的邮件；   流水线发邮件
+        stage('发送确认邮件') {
+            agent none
             steps {
-                input(id: 'deploy-to-production', message: 'deploy to production?')
-                kubernetesDeploy(configs: 'deploy/prod-ol/**', enableConfigSubstitution: true, kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
+                mail(to: '17512080612@163.com', subject: '构建结果', body: "构建成功了  $BUILD_NUMBER")
             }
         }
 
@@ -384,7 +393,6 @@ pipeline {
         GITHUB_ACCOUNT = 'kubesphere'
         APP_NAME = 'devops-java-sample'
         ALIYUNHUB_NAMESPACE = 'lfy_hello'
-
     }
     parameters {
         string(name: 'TAG_NAME', defaultValue: '', description: '')
