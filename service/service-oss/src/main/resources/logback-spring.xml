@@ -149,7 +149,7 @@
     </springProfile>
 
     <!--生产环境:输出到文件-->
-    <springProfile name="pro">
+    <springProfile name="prod">
 
         <!--可以输出项目中的debug日志，包括mybatis的sql日志-->
         <logger name="com.guli" level="WARN" />
