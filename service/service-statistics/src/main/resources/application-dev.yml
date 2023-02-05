@@ -1,5 +1,5 @@
 server:
-  port: 8208
+  port: 8080
 feign:
   sentinel:
     enabled: true
@@ -14,4 +14,4 @@ spring:
   cloud:
     sentinel:
       transport:
-        dashboard: http://192.168.200.188:8858
+        dashboard: his-sentinel.his:8080

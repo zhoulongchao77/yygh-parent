@@ -1,5 +1,5 @@
 server:
-  port: 9999
+  port: 8080
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
@@ -14,7 +14,7 @@ spring:
     #配置模板路径，默认是templates，可以不用配置
     prefix: classpath:/templates/
   redis:
-    host: 192.168.200.188
+    host: his-redis.his
     port: 6379
     database: 0
     timeout: 1800000

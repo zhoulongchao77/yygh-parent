@@ -1,12 +1,12 @@
 server:
-  port: 8207
+  port: 8080
 spring:
   cloud:
     sentinel:
       transport:
-        dashboard: 192.168.200.188:8858
+        dashboard: his-sentinel.his:8080
   rabbitmq:
-    host: 192.168.200.188
-    port: 5672
+    host: his-rabbitmq.his
+    port: 15672
     username: admin
     password: admin

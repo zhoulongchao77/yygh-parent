@@ -1,18 +1,18 @@
 server:
-  port: 8204
+  port: 8080
 
 spring:
   cloud:
     sentinel:
       transport:
-        dashboard: http://192.168.200.188:8858
+        dashboard: his-sentinel.his:8080
   rabbitmq:
-    host: 192.168.200.188
-    port: 5672
+    host: his-rabbitmq.his
+    port: 15672
     username: admin
     password: admin
   redis:
-    host: 192.168.200.188
+    host: his-redis.his
 #阿里云 短信
 aliyun:
   sms:
